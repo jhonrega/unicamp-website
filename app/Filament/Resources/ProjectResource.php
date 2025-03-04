@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Filament\Resources;
 
@@ -11,11 +11,12 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
 
 class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -25,11 +26,19 @@ class ProjectResource extends Resource
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+
                 TextInput::make('description')
                     ->required()
                     ->maxLength(255),
-                TextInput::make('image') // Cambiado a TextInput para ingresar la ruta de la imagen
+
+                FileUpload::make('image')
+                    ->label('Imagen del proyecto')
+                    ->image()
+                    ->directory('images') // Guarda en 'storage/app/public/images'
+                    ->disk('public') // Usa el disco 'public'
+                    ->visibility('public') // Hace la imagen accesible públicamente
                     ->required(),
+                
             ]);
     }
 
@@ -37,22 +46,24 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                TextColumn::make('image'), // Mostrar la ruta de la imagen como texto
+                TextColumn::make('title')->searchable(),
+                
+                TextColumn::make('description')->searchable(),
+
+                ImageColumn::make('image')
+                    ->disk('public')
+                    ->getStateUsing(fn ($record) => asset('storage/' . $record->image)) // Genera la URL correcta
+                    ->width(50), // Ajusta el tamaño de la imagen
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -66,9 +77,7 @@ class ProjectResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

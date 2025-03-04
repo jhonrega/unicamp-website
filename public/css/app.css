@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #000;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.project-card {
+    width: 22rem; /* Asegurar que el tamaño coincida con el inline style */
+    border: none !important; /* Eliminar el borde */
+    box-shadow: none !important; /* Eliminar sombra si no se necesita */
+    text-align: center;
+    background: #fff;
+    padding: 20px; /* Espacio interno */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px; /* Aumenta la altura de la imagen */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+.card-body {
+    padding: 15px; /* Reduce el padding interno */
+    min-height: auto; /* Permitir que se ajuste automáticamente */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Evita que se genere espacio extra */
+    align-items: center;
+}
+
+
+.carousel-item {
+    padding: 30px 0; /* Espacio entre los slides */
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+.project-card {
+    border: none !important; /* Asegura que no haya borde */
+    box-shadow: none !important; /* Elimina cualquier sombra */
+}
+
+.card {
+    border: none !important; /* Asegura que Bootstrap no agregue un borde */
+    box-shadow: none !important; /* Elimina cualquier sombra */
+}
+
+.btn-cotizar {
+    background-color: #1c1937 !important;
+    color: white !important;
+    border: none !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-cotizar:hover {
+    background-color: #292654 !important; /* Un tono más claro con un toque de azul */
+    transform: scale(1.05); /* Pequeño efecto de crecimiento */
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 300px; /* Espacio entre secciones */
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section.contacto {
+    margin-right: auto; /* Mueve más a la izquierda */
+}
+
+.footer h6 {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sección inferior */
+.footer-bottom {
+    background-color: #e47d23;
+    padding: 10px 40px; /* Añade espacio en los lados */
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.footer-bottom p {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Iconos de redes sociales */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #000;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}

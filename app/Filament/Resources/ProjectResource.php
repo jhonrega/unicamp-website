@@ -31,7 +31,7 @@ class ProjectResource extends Resource
                     ->required()
                     ->maxLength(255),
 
-                FileUpload::make('image')
+                    FileUpload::make('image')
                     ->label('Imagen del proyecto')
                     ->image()
                     ->directory('images') // Guarda en 'storage/app/public/images'

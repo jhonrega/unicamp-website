@@ -37,16 +37,37 @@
             </div>
         </section>
 
-        <section class="container my-5">
-            <h3 class="fw-bold">Algunos de nuestros clientes:</h3>
-            <div class="d-flex align-items-center justify-content-between">
-                <button class="btn btn-light"><i class="fas fa-chevron-left"></i></button>
-                <img src="{{ asset('images/clientes/drummond.png') }}" class="img-fluid mx-2" alt="Drummond">
-                <img src="{{ asset('images/clientes/parko-services.png') }}" class="img-fluid mx-2" alt="Parko Services">
-                <img src="{{ asset('images/clientes/drummond-energy.png') }}" class="img-fluid mx-2" alt="Drummond Energy">
-                <button class="btn btn-light"><i class="fas fa-chevron-right"></i></button>
+    <section class="container my-5">
+        <h3 class="fw-bold text-center mb-4">Nuestros Clientes</h3>
+
+        <div id="clientsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($clients->chunk(3) as $key => $chunk)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <div class="d-flex justify-content-center align-items-center">
+                            @foreach ($chunk as $client)
+                                <img src="{{ asset('storage/' . $client->logo) }}" 
+                                    class="img-fluid mx-3" 
+                                    alt="{{ $client->name }}" 
+                                    style="max-height: 100px;">
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </section>
+
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#clientsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#clientsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
     </main>
 
   

@@ -14,3 +14,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/about', [ClientController::class, 'index']);
+
+Route::get('/services', function () {
+    return view('services');
+});

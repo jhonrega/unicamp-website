@@ -7,13 +7,7 @@
   background-color: #f9f9f9;
   text-align: center;
 ">
-  <h2 style="
-    font-family: Arial, sans-serif;
-    font-size: 30px; 
-    font-weight: bold;
-    color: #1c1937;
-    margin-bottom: 10px; 
-  ">
+  <h2>
     Las mejores soluciones en contenedores
   </h2>
 

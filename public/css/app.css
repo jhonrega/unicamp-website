@@ -1,3 +1,4 @@
+/* General */
 body {
     font-family: Arial, sans-serif;
 }
@@ -22,73 +23,170 @@ nav ul li a {
     font-weight: bold;
 }
 
-.project-card {
-    width: 22rem; /* Asegurar que el tamaño coincida con el inline style */
-    border: none !important; /* Eliminar el borde */
-    box-shadow: none !important; /* Eliminar sombra si no se necesita */
-    text-align: center;
+/* Ajuste del contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     background: #fff;
-    padding: 20px; /* Espacio interno */
-    transition: transform 0.3s ease-in-out;
 }
 
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-.project-card img {
-    width: 100%;
-    height: 250px; /* Aumenta la altura de la imagen */
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-
-.card-body {
-    padding: 15px; /* Reduce el padding interno */
-    min-height: auto; /* Permitir que se ajuste automáticamente */
+/* Asegurar que el carrusel está centrado */
+.project-carousel-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Evita que se genere espacio extra */
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
-
-.carousel-item {
-    padding: 30px 0; /* Espacio entre los slides */
+/* Contenedor del carrusel */
+.project-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.container {
-    background: #fff;
-    padding: 30px;
-    margin-bottom: 20px;
+/* Tarjetas del carrusel */
+.project-item {
+    padding: 10px; /* Se corrigió el error de espacio */
 }
+
+/* Tarjetas del carrusel */
 .project-card {
-    border: none !important; /* Asegura que no haya borde */
-    box-shadow: none !important; /* Elimina cualquier sombra */
+    width: 100%;
+    height: 480px; /* Antes 520px, ahora un poco menos */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.card {
-    border: none !important; /* Asegura que Bootstrap no agregue un borde */
-    box-shadow: none !important; /* Elimina cualquier sombra */
+/* Aumentar la altura de la imagen dentro de la tarjeta */
+.project-card img {
+    width: 100%;
+    height: 270px; /* Antes 300px, ahora un poco menos */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
+/* Ajustar el cuerpo de la tarjeta */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+
+/* Efecto hover */
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Aumentar la altura de la imagen dentro de la tarjeta */
+.project-card img {
+    width: 100%;
+    height: 300px; /* Antes era 200px, ahora es más alta */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Ajustar el cuerpo de la tarjeta */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Ajuste del título y la descripción */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #333;
+    margin: 0 10px;
+}
+
+/* Estilos del botón Cotiza Aquí */
 .btn-cotizar {
     background-color: #1c1937 !important;
     color: white !important;
     border: none !important;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+    display: inline-block !important;
+    text-align: center !important;
 }
 
 .btn-cotizar:hover {
-    background-color: #292654 !important; /* Un tono más claro con un toque de azul */
-    transform: scale(1.05); /* Pequeño efecto de crecimiento */
+    background-color: #292654 !important;
+    transform: scale(1.05) !important;
 }
 
+
+/* Contenedor de los controles (indicadores y botón) */
+.carousel-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilos de los indicadores del carrusel */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Estilos de los puntitos del carrusel */
+.carousel-indicators span {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-indicators span.active {
+    background-color: #1c1937;
+}
+
+/* Footer */
 .footer {
     background-color: #f8f9fa;
-    padding: 20px 0;
     width: 100%;
 }
 
@@ -99,7 +197,7 @@ nav ul li a {
     padding: 0 40px;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 300px; /* Espacio entre secciones */
+    gap: 30px; /* Se redujo de 300px a 30px para evitar una separación excesiva */
 }
 
 .footer-section {
@@ -109,7 +207,7 @@ nav ul li a {
 }
 
 .footer-section.contacto {
-    margin-right: auto; /* Mueve más a la izquierda */
+    margin-right: auto;
 }
 
 .footer h6 {
@@ -139,7 +237,7 @@ nav ul li a {
 /* Sección inferior */
 .footer-bottom {
     background-color: #e47d23;
-    padding: 10px 40px; /* Añade espacio en los lados */
+    padding: 10px 40px;
     text-align: center;
     color: #fff;
     display: flex;

@@ -1,19 +1,60 @@
-/* General */
+/* ---------------------------
+   RESET / BASE
+---------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
-h1 {
-    color: #000;
+/* ---------------------------
+   CONTENEDOR PRINCIPAL
+---------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 8px;
 }
 
+/* ---------------------------
+   TITULOS / TEXTOS
+---------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    color: #1c1937;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* ---------------------------
+   MENU DE NAVEGACION
+---------------------------- */
 nav ul {
     list-style-type: none;
     padding: 0;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block;
     margin-right: 20px;
 }
 
@@ -21,17 +62,105 @@ nav ul li a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-/* Ajuste del contenedor principal */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: #fff;
+nav ul li a:hover {
+    color: #1c1937;
 }
 
-/* Asegurar que el carrusel está centrado */
+/* ---------------------------
+   BOTONES
+---------------------------- */
+.btn-cotizar, .btn-dark {
+    background-color: #1c1937 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+    display: inline-block !important;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.btn-cotizar:hover,
+.btn-dark:hover {
+    background-color: #292654 !important;
+    transform: scale(1.05) !important;
+}
+
+/* ---------------------------
+   SECCION DE SERVICIOS
+---------------------------- */
+/* 
+   Para alinear imagen y texto en filas, 
+   y que sea responsive en móviles
+*/
+.services-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.services-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.services-img {
+    flex: 1;
+}
+
+.services-img img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-img img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.services-content {
+    flex: 1;
+    padding: 1rem;
+}
+
+.services-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1c1937;
+}
+
+.services-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* 
+   Responsividad: En pantallas pequeñas, 
+   apila la imagen y el texto en columna 
+*/
+@media (max-width: 768px) {
+    .services-row {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .services-content {
+        padding: 0.5rem;
+    }
+}
+
+/* ---------------------------
+   CARRUSEL DE PROYECTOS
+---------------------------- */
 .project-carousel-container {
     display: flex;
     flex-direction: column;
@@ -41,7 +170,6 @@ nav ul li a {
     width: 100%;
 }
 
-/* Contenedor del carrusel */
 .project-carousel {
     display: flex;
     flex-wrap: wrap;
@@ -53,15 +181,13 @@ nav ul li a {
     margin: 0 auto;
 }
 
-/* Tarjetas del carrusel */
 .project-item {
-    padding: 10px; /* Se corrigió el error de espacio */
+    padding: 10px;
 }
 
-/* Tarjetas del carrusel */
 .project-card {
     width: 100%;
-    height: 480px; /* Antes 520px, ahora un poco menos */
+    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -74,41 +200,18 @@ nav ul li a {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Aumentar la altura de la imagen dentro de la tarjeta */
-.project-card img {
-    width: 100%;
-    height: 270px; /* Antes 300px, ahora un poco menos */
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Ajustar el cuerpo de la tarjeta */
-.card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    text-align: center;
-}
-
-
-/* Efecto hover */
 .project-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Aumentar la altura de la imagen dentro de la tarjeta */
 .project-card img {
     width: 100%;
-    height: 300px; /* Antes era 200px, ahora es más alta */
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
 }
 
-/* Ajustar el cuerpo de la tarjeta */
 .card-body {
     flex-grow: 1;
     display: flex;
@@ -119,10 +222,10 @@ nav ul li a {
     text-align: center;
 }
 
-/* Ajuste del título y la descripción */
 .card-title {
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
 .card-text {
@@ -131,27 +234,9 @@ nav ul li a {
     margin: 0 10px;
 }
 
-/* Estilos del botón Cotiza Aquí */
-.btn-cotizar {
-    background-color: #1c1937 !important;
-    color: white !important;
-    border: none !important;
-    padding: 12px 25px !important;
-    font-size: 16px !important;
-    font-weight: bold !important;
-    border-radius: 5px !important;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
-    display: inline-block !important;
-    text-align: center !important;
-}
-
-.btn-cotizar:hover {
-    background-color: #292654 !important;
-    transform: scale(1.05) !important;
-}
-
-
-/* Contenedor de los controles (indicadores y botón) */
+/* ---------------------------
+   INDICADORES DE CARRUSEL
+---------------------------- */
 .carousel-controls {
     display: flex;
     flex-direction: column;
@@ -160,7 +245,6 @@ nav ul li a {
     margin-top: 20px;
 }
 
-/* Estilos de los indicadores del carrusel */
 .carousel-indicators {
     display: flex;
     justify-content: center;
@@ -169,7 +253,6 @@ nav ul li a {
     margin-bottom: 15px;
 }
 
-/* Estilos de los puntitos del carrusel */
 .carousel-indicators span {
     width: 10px;
     height: 10px;
@@ -184,10 +267,13 @@ nav ul li a {
     background-color: #1c1937;
 }
 
-/* Footer */
+/* ---------------------------
+   FOOTER
+---------------------------- */
 .footer {
     background-color: #f8f9fa;
     width: 100%;
+    margin-top: 2rem;
 }
 
 .footer-container {
@@ -197,7 +283,7 @@ nav ul li a {
     padding: 0 40px;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 30px; /* Se redujo de 300px a 30px para evitar una separación excesiva */
+    gap: 30px;
 }
 
 .footer-section {
@@ -234,7 +320,6 @@ nav ul li a {
     text-decoration: underline;
 }
 
-/* Sección inferior */
 .footer-bottom {
     background-color: #e47d23;
     padding: 10px 40px;
@@ -253,7 +338,6 @@ nav ul li a {
     text-align: center;
 }
 
-/* Iconos de redes sociales */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -267,4 +351,27 @@ nav ul li a {
 
 .social-icons a:hover {
     color: #fff;
+}
+
+/* ---------------------------
+   IMAGENES MODERNAS
+---------------------------- */
+.modern-img {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.modern-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.footer .social-icons a {
+    transition: transform 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    transform: translateY(-5px);
 }

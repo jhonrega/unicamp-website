@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - UNICAMP SAS</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-    @include('layouts.header')
-    
-    <!-- Se agrega estilo en línea para aumentar el margen superior -->
-    <main class="container" style="margin-top: 100px;">
-        <h1 class="text-center mb-4">NUESTROS SERVICIOS</h1>
+@extends('layouts.app')
+
+@section('title', 'Servicios')
+
+@section('content')
+    <!-- Ajusta margin-top y padding-top para separar el contenido del header -->
+    <div class="container" style="margin-top: 80px; padding-top: 50px;">
+        <!-- Título con animación -->
+        <h1 class="section-title text-center" data-aos="fade-up">
+            NUESTROS SERVICIOS
+        </h1>
         
         @php
             use App\Models\Service;
@@ -22,19 +16,22 @@
         @endphp
 
         @foreach($services as $key => $service)
-            <div class="row mb-5 align-items-center {{ $key % 2 == 0 ? '' : 'flex-row-reverse' }}">
-                <div class="col-md-6">
+            <div class="row g-5 mb-5 {{ $key % 2 == 0 ? '' : 'flex-row-reverse' }}"
+                 data-aos="fade-up"
+                 data-aos-delay="{{ $key * 100 }}">
+
+                <div class="col-md-6" data-aos="fade-right">
                     <h3>{{ $service->title }}</h3>
                     <p>{{ $service->description }}</p>
                     <a href="#" class="btn btn-dark">Cotiza Aquí</a>
                 </div>
-                <div class="col-md-6">
-                    <img src="{{ asset('storage/' . $service->image) }}" class="img-fluid" alt="{{ $service->title }}">
+
+                <div class="col-md-6" data-aos="fade-left">
+                    <img src="{{ asset('storage/' . $service->image) }}"
+                         class="img-fluid modern-img"
+                         alt="{{ $service->title }}">
                 </div>
             </div>
         @endforeach
-    </main>
-    
-    @include('layouts.footer')
-</body>
-</html>
+    </div>
+@endsection

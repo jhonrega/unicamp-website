@@ -30,7 +30,7 @@
     <!-- Opciones de menú -->
     <div id="nav-links" class="nav-links">
       <a href="{{ url('/about') }}" class="menu-btn">Sobre Nosotros</a>
-      <a href="#products" class="menu-btn">Productos</a>
+      <a href="{{ url('/products') }}" class="menu-btn">Productos</a>
       <a href="{{ url('/services') }}" class="menu-btn">Servicios</a>
       <a href="#contact" class="menu-btn">Contáctanos</a>
     </div>

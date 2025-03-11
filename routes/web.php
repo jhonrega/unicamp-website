@@ -9,12 +9,10 @@ Route::get('/', function () {
     return view('welcome', compact('projects'));
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
-
 Route::get('/about', [ClientController::class, 'index']);
 
 Route::get('/services', function () {
     return view('services');
 });
+
+Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');

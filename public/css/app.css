@@ -280,7 +280,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 40px;
+    padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
     gap: 30px;

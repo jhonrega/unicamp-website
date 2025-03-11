@@ -17,7 +17,7 @@
     </div>
 
     <div class="footer-bottom">
-        <div class="social-icons" data-aos="fade-up" data-aos-delay="400" data-aos-once="true">
+        <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>

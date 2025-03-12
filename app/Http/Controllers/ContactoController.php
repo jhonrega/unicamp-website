@@ -48,7 +48,7 @@ class ContactoController extends Controller
         if ($request->cotizacion == "Sí") {
             $pdf = Pdf::loadView('emails.pdf_contacto', ['datos' => $cotizacion]);
         } else {
-            $pdf = Pdf::loadView('emails.pdf_contactophp ar', ['datos' => $cotizacion]);
+            $pdf = Pdf::loadView('emails.pdf_contacto', ['datos' => $cotizacion]);
         }
     
         // Guardar el PDF

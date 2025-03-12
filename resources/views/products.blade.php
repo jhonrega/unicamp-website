@@ -3,18 +3,18 @@
 @section('title', 'Productos')
 
 @section('content')
-<div class="container my-5"  data-aos="fade-up" data-aos-duration="1200">
+<div class="container my-5" data-aos="zoom-in" data-aos-duration="1200">
     <h1 class="section-title text-center mb-5 fs-2 fw-bold" style="margin-top:30px">Catálogo de Productos</h1>
 
-    <div class="row row-cols-1 gy-4" ata-aos="fade-up" data-aos-delay="200">
+    <div class="row row-cols-1 gy-4" data-aos="fade-up" data-aos-delay="200">
         @foreach($products as $product)
-            <div class="col">
+            <div class="col" data-aos="fade-up" data-aos-delay="300">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <h3 class="text-center fw-bold mb-4">{{ $product->nombre }}</h3>
 
                         <div class="row align-items-center g-3">
-                            <div class="col-md-6 d-flex justify-content-center">
+                            <div class="col-md-6 d-flex justify-content-center" data-aos="fade-right" data-aos-delay="400">
                                 @php
                                     $imgs = $product->imagenes;
                                     if (is_string($imgs) && !empty($imgs)) {
@@ -73,7 +73,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-md-6 d-flex flex-column justify-content-center text-start">
+                            <div class="col-md-6 d-flex flex-column justify-content-center text-start" data-aos="fade-left" data-aos-delay="500">
                                 <h5 class="fw-bold">Descripción:</h5>
                                 <p class="fs-5" style="text-align: justify;">
                                     {{ $product->descripcion }}

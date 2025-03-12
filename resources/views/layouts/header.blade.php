@@ -32,7 +32,7 @@
       <a href="{{ url('/about') }}" class="menu-btn">Sobre Nosotros</a>
       <a href="{{ url('/products') }}" class="menu-btn">Productos</a>
       <a href="{{ url('/services') }}" class="menu-btn">Servicios</a>
-      <a href="#contact" class="menu-btn">Contáctanos</a>
+      <a href="{{ url('/contacto') }}" class="menu-btn">Contáctanos</a>
     </div>
   </nav>
 

@@ -16,7 +16,7 @@
     <!-- Logo -->
     <div style="flex-shrink: 0;">
       <a href="{{ url('/') }}">
-        <img src="{{ asset('images/logo-unicamp.png') }}" alt="Logo UNICAMP" style="height: 60px;">
+        <img src="{{ asset('images/logo-unicamp.webp') }}" alt="Logo UNICAMP" style="height: 60px;">
       </a>
     </div>
 
@@ -66,7 +66,7 @@
     margin-top: 90px;
     width: 100%;
     height: calc(100vw * (480 / 1280));
-    background-image: url('{{ asset('images/fondo.jpg') }}');
+    background-image: url('{{ asset('images/fondo.webp') }}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

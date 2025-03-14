@@ -24,7 +24,7 @@
                 </div>
                 <!-- Imagen y enlace de WhatsApp -->
                 <div class="col-md-4 position-relative text-center" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="{{ asset('images/sobre-nosotros.jpg') }}" class="img-fluid rounded shadow" alt="Proyecto de contenedor">
+                    <img src="{{ asset('images/sobre-nosotros.webp') }}" class="img-fluid rounded shadow" alt="Proyecto de contenedor">
                     <a href="https://wa.me/57XXXXXXXXX" target="_blank">
                         <img src="{{ asset('images/whatsapp-icon.png') }}" class="position-absolute" style="width: 50px; right: 20px; bottom: 20px;" alt="WhatsApp">
                     </a>

@@ -12,7 +12,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
 
 class ProductResource extends Resource
 {
@@ -41,12 +40,15 @@ class ProductResource extends Resource
                     ])
                     ->columnSpanFull(),
 
-                FileUpload::make('imagenes') // Cambia 'images' por 'imagenes'
+                FileUpload::make('imagenes')
+                    ->label('Imágenes del producto')
                     ->image()
                     ->multiple()
-                    ->directory('products')
-                    ->columnSpanFull(),
-                
+                    ->directory('products') // Guarda en storage/app/public/products
+                    ->disk('public') // Usa el disco 'public'
+                    ->preserveFilenames() // Mantiene el nombre original del archivo
+                    ->visibility('public')
+                    ->required(),
             ]);
     }
 
@@ -59,9 +61,22 @@ class ProductResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                ImageColumn::make('imagenes')
-                    ->label('Imagen')
-                    ->size(50), // Tamaño de miniatura
+                TextColumn::make('imagenes')
+                    ->label('Imágenes')
+                    ->formatStateUsing(function ($record) {
+                        if (!is_array($record->imagenes)) {
+                            return '-';
+                        }
+                
+                        return "<div style='display: flex; gap: 5px; flex-wrap: wrap;'>
+                                    " . collect($record->imagenes)->map(function ($imagen) {
+                                        return "<img src='" . asset('storage/' . $imagen) . "' 
+                                                    style='width: 80px; height: 80px; object-fit: cover; border-radius: 5px;' />";
+                                    })->implode(' ') . "
+                                </div>";
+                    })
+                    ->html(),
+                
             ])
             ->filters([])
             ->actions([

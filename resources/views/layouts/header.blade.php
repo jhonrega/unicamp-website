@@ -170,7 +170,9 @@
   }
 
   .menu-btn:hover {
-    background-color: #1c1937;
+    background: linear-gradient(135deg, #0056b3,rgb(1, 76, 156));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
     color: white;
   }
 

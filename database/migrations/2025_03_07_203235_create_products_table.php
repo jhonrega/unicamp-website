@@ -13,10 +13,10 @@ return new class extends Migration {
             $table->text('descripcion')->nullable();
             $table->json('especificaciones')->nullable();
             $table->text('imagenes')->nullable();
+            $table->string('pdf')->nullable(); // Agregamos el campo para el PDF
             $table->timestamps();
         });
     }
-
 
     public function down()
     {

@@ -20,37 +20,50 @@ class ProductResource extends Resource
     protected static ?string $navigationGroup = 'Products';
 
     public static function form(Forms\Form $form): Forms\Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('nombre')
-                    ->label('Nombre')
-                    ->required()
-                    ->maxLength(255),
+{
+    return $form
+        ->schema([
+            TextInput::make('nombre')
+                ->label('Nombre')
+                ->required()
+                ->maxLength(255),
 
-                Textarea::make('descripcion')
-                    ->label('Descripción')
-                    ->rows(3),
+            Textarea::make('descripcion')
+                ->label('Descripción')
+                ->rows(3),
 
-                Repeater::make('especificaciones')
-                    ->label('Especificaciones')
-                    ->schema([
-                        TextInput::make('clave')->label('Característica')->required(),
-                        TextInput::make('medidas')->label('Medidas')->required(),
-                    ])
-                    ->columnSpanFull(),
+            Repeater::make('especificaciones')
+                ->schema([
+                    TextInput::make('caracteristica')
+                        ->label('Característica')
+                        ->required(),
+                    TextInput::make('medidas') // Asegúrate de que sea "medidas" en lugar de "descripción"
+                        ->label('Medidas')
+                        ->nullable(),
+                ])
+                ->columns(2),
+            
+            
+            FileUpload::make('imagenes')
+                ->label('Imágenes del producto')
+                ->image()
+                ->multiple()
+                ->directory('products') // Guarda en storage/app/public/products
+                ->disk('public') // Usa el disco 'public'
+                ->preserveFilenames() // Mantiene el nombre original del archivo
+                ->visibility('public')
+                ->required(),
 
-                FileUpload::make('imagenes')
-                    ->label('Imágenes del producto')
-                    ->image()
-                    ->multiple()
-                    ->directory('products') // Guarda en storage/app/public/products
-                    ->disk('public') // Usa el disco 'public'
-                    ->preserveFilenames() // Mantiene el nombre original del archivo
-                    ->visibility('public')
-                    ->required(),
-            ]);
-    }
+            FileUpload::make('pdf') // 📌 Campo para PDF
+                ->label('Especificaciones Técnicas (PDF)')
+                ->disk('public')
+                ->directory('pdfs') // Se guardará en storage/app/public/pdfs
+                ->acceptedFileTypes(['application/pdf'])
+                ->maxSize(2048) // Máximo 2MB
+                ->preserveFilenames()
+                ->visibility('public'),
+        ]);
+}
 
     public static function table(Tables\Table $table): Tables\Table
     {
@@ -60,22 +73,30 @@ class ProductResource extends Resource
                     ->label('Nombre')
                     ->sortable()
                     ->searchable(),
-
-                TextColumn::make('imagenes')
-                    ->label('Imágenes')
+                    
+                TextColumn::make('especificaciones')
+                    ->label('Especificaciones')
                     ->formatStateUsing(function ($record) {
-                        if (!is_array($record->imagenes)) {
+                        $especificaciones = is_string($record->especificaciones) 
+                            ? json_decode($record->especificaciones, true) 
+                            : $record->especificaciones;
+                
+                        if (empty($especificaciones)) {
                             return '-';
                         }
                 
-                        return "<div style='display: flex; gap: 5px; flex-wrap: wrap;'>
-                                    " . collect($record->imagenes)->map(function ($imagen) {
-                                        return "<img src='" . asset('storage/' . $imagen) . "' 
-                                                    style='width: 80px; height: 80px; object-fit: cover; border-radius: 5px;' />";
-                                    })->implode(' ') . "
-                                </div>";
+                        return "<ul style='padding-left: 20px; margin: 0;'>" . 
+                            collect($especificaciones)->map(function ($item) {
+                                $clave = $item['clave'] ?? 'Sin nombre';  
+                                $medidas = $item['medidas'] ?? 'No especificado';
+                                
+                                return "<li><strong>" . ucfirst($clave) . ":</strong> {$medidas}</li>";
+                            })->implode('') . 
+                            "</ul>";
                     })
-                    ->html(),
+                    ->html(), // Permite mostrar HTML en la tabla
+                
+                
                 
             ])
             ->filters([])

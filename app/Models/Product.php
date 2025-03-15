@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'descripcion', 'especificaciones', 'imagenes'];
+    protected $fillable = ['nombre', 'descripcion', 'especificaciones', 'imagenes', 'pdf']; // Agregado 'pdf'
 
     protected $casts = [
         'especificaciones' => 'array',
@@ -23,8 +23,13 @@ class Product extends Model
         static::deleting(function ($product) {
             if (!empty($product->imagenes)) {
                 foreach ($product->imagenes as $imagen) {
-                    Storage::disk('public')->delete($imagen); // Borra cada imagen del array
+                    Storage::disk('public')->delete($imagen);
                 }
+            }
+
+            // Borrar el PDF si existe
+            if ($product->pdf) {
+                Storage::disk('public')->delete($product->pdf);
             }
         });
     }

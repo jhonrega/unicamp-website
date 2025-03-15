@@ -72,7 +72,7 @@ nav ul li a:hover {
 /* ---------------------------
    BOTONES
 ---------------------------- */
-.btn-cotizar, .btn-dark {
+.btn-cotizar, .btn-dark, .boton-especificar {
     background-color: #1c1937 !important;
     color: #fff !important;
     border: none !important;
@@ -87,7 +87,7 @@ nav ul li a:hover {
 }
 
 .btn-cotizar:hover,
-.btn-dark:hover {
+.btn-dark:hover, .boton-especificar:hover {
     background-color: #292654 !important;
     transform: scale(1.05) !important;
 }
@@ -212,27 +212,102 @@ nav ul li a:hover {
     border-radius: 8px;
 }
 
-.card-body {
-    flex-grow: 1;
+.card-products {
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+    border: none;
+    padding: 20px;
+    max-width: 900px; /* Ajusta el ancho */
+    margin: auto;
+}
+
+.card-products:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-products img {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    filter: brightness(0.95);
+    width: 100%;
+    height: auto;
+}
+
+.card-products img:hover {
+    transform: scale(1.02);
+    filter: brightness(1);
+}
+
+/* ✅ TÍTULO CENTRADO */
+.card-title-products {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #1c1937;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    text-align: center;
+    text-align: center; /* Asegura el centrado */
+    margin-bottom: 16px;
 }
 
-.card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.card-text-products {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
-.card-text {
+.card-body-products {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* ✅ BOTÓN MÁS MODERNO */
+.btn-custom {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
     font-size: 14px;
-    color: #333;
-    margin: 0 10px;
+    font-weight: 600;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
 }
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-custom:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ICONO DEL BOTÓN */
+.btn-custom i {
+    font-size: 16px;
+}
+
 
 /* ---------------------------
    INDICADORES DE CARRUSEL

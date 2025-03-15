@@ -61,7 +61,6 @@ class ServiceResource extends Resource
         ]);
 }
 
-
     public static function getRelations(): array
     {
         return [
@@ -78,4 +77,3 @@ class ServiceResource extends Resource
         ];
     }
 }
-

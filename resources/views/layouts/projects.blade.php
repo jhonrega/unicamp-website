@@ -25,7 +25,7 @@
 
         <!-- Botón Cotiza Aquí alineado -->
         <div class="text-center mt-4">
-            <a href="#" class="btn btn-cotizar">Cotiza Aquí</a>
+            <a href="#" class="btn-cotizar">Cotiza Aquí</a>
         </div>
     @else
         <p class="text-center">No hay proyectos disponibles.</p>
@@ -35,6 +35,7 @@
 <!-- Agrega los scripts de Slick.js al final -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
 
 <script>
     $(document).ready(function(){

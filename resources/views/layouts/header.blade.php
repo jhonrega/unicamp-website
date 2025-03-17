@@ -1,26 +1,14 @@
 <header style="width: 100vw; position: relative;">
   <!-- Menú de navegación -->
-  <nav style="
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: rgba(255, 255, 255, 0.95);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  ">
+  <nav id="navbar">
     <!-- Logo -->
-    <div style="flex-shrink: 0;">
+    <div class="logo">
       <a href="{{ url('/') }}">
-        <img src="{{ asset('images/logo-unicamp.webp') }}" alt="Logo UNICAMP" style="height: 60px;">
+        <img src="{{ asset('images/logo-unicamp.webp') }}" alt="Logo UNICAMP">
       </a>
     </div>
 
-    <!-- Menú hamburguesa (solo en móviles) -->
+    <!-- Menú hamburguesa -->
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
       <span></span>
@@ -29,31 +17,19 @@
 
     <!-- Opciones de menú -->
     <div id="nav-links" class="nav-links">
-      <a href="{{ url('/about') }}" class="menu-btn">Sobre Nosotros</a>
-      <a href="{{ url('/products') }}" class="menu-btn">Productos</a>
-      <a href="{{ url('/services') }}" class="menu-btn">Servicios</a>
-      <a href="{{ url('/contacto') }}" class="menu-btn">Contáctanos</a>
+      <a href="{{ url('/about') }}" class="menu-btn {{ Request::is('about') ? 'active' : '' }}">Sobre Nosotros</a>
+      <a href="{{ url('/products') }}" class="menu-btn {{ Request::is('products') ? 'active' : '' }}">Productos</a>
+      <a href="{{ url('/services') }}" class="menu-btn {{ Request::is('services') ? 'active' : '' }}">Servicios</a>
+      <a href="{{ url('/contacto') }}" class="menu-btn {{ Request::is('contacto') ? 'active' : '' }}">Contáctanos</a>
     </div>
   </nav>
 
-  <!-- Imagen de fondo y palabras -->
+  <!-- Imagen de fondo con palabras -->
   @if(Request::is('/'))
   <div class="hero-section">
     <div class="overlay"></div>
     <div class="hero-text">
-      <span data-aos="fade-right" data-aos-duration="1000">INNOVACIÓN</span>
-      <span data-aos="fade-right" data-aos-duration="1200">CALIDAD</span>
-      <span data-aos="fade-right" data-aos-duration="1400">SEGURIDAD</span>
-      <span data-aos="fade-right" data-aos-duration="1600">PORTABILIDAD</span>
-    </div>
-
-    <!-- Curva animada -->
-    <div class="wave-container">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="wave-path" fill="#ffffff" fill-opacity="1" 
-          d="M0,160L80,170.7C160,181,320,203,480,197.3C640,192,800,160,960,144C1120,128,1280,128,1360,128L1440,128V320H0Z">
-        </path>
-      </svg>
+      <span id="typewriter-text"></span>
     </div>
   </div>
   @endif
@@ -61,181 +37,59 @@
 
 <!-- Estilos -->
 <style>
-  /* Ajustar margen para que el menú no cubra la imagen */
-  .hero-section {
+/* HERO SECTION */
+.hero-section {
     margin-top: 90px;
-    width: 100%;
-    height: calc(100vw * (480 / 1280));
+    width: 100vw; /* Asegura que solo ocupe el ancho del viewport */
+    max-width: 100%;
+    height: calc(100vw * (480 / 1280)); /* Mantiene la proporción */
     background-image: url('{{ asset('images/fondo.webp') }}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    align-items: center;
-    padding-right: 5%;
     overflow: hidden;
-  }
+}
 
-  .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100%;
-  }
-
-  /* Ajuste del tamaño del texto dinámicamente */
-  .hero-text {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      font-family: 'Arial', sans-serif;
-      font-size: 2.5vw; /* Se ajusta mejor en todas las pantallas */
-      font-weight: bold;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 20px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.4);
-      max-width: 80%;
-  }
-
-  /* Ajustes para pantallas más pequeñas */
-  @media (max-width: 1024px) {
-      .hero-text {
-          font-size: 2vw;
-      }
-  }
-
-  @media (max-width: 768px) {
-      .hero-text {
-          font-size: 4vw;
-      }
-  }
-
-  @media (max-width: 480px) {
-      .hero-text {
-          font-size: 5vw;
-      }
-  }
-
-  /* Contenedor de la curva */
-  .wave-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      overflow: hidden;
-  }
-
-  /* SVG de la onda */
-  .wave-container svg {
-      width: 100%;
-      height: 100%;
-  }
-
-  /* Animación de la curva */
-  .wave-path {
-      animation: wave-move 3s infinite ease-in-out;
-  }
-
-  @keyframes wave-move {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(25px); }
-      100% { transform: translateY(0); }
-  }
-
-  /* Estilos del menú */
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .menu-btn {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-    padding: 10px 16px;
-    border-radius: 25px;
-    background-color: transparent;
-    transition: all 0.3s ease;
-  }
-
-  .menu-btn:hover {
-    background: linear-gradient(135deg, #0056b3,rgb(1, 76, 156));
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-    color: white;
-  }
-
-  /* Botón hamburguesa */
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: #333;
-    border-radius: 3px;
-  }
-
-  /* Ajuste para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: flex;
-    }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background: white;
-      padding: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links.show {
-      display: flex;
-    }
-  }
-
-  /* Ajuste de la curva en dispositivos pequeños */
-  @media (max-width: 768px) {
-      .wave-container {
-          height: 80px;
-      }
-  }
-
-  @media (max-width: 480px) {
-      .wave-container {
-          height: 60px;
-      }
-  }
 </style>
 
 <!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  AOS.init();
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.getElementById("navbar");
+    const navLinks = document.getElementById("nav-links");
 
-  function toggleMenu() {
-    var navLinks = document.getElementById("nav-links");
-    navLinks.classList.toggle("show");
-  }
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    window.toggleMenu = function () {
+      navLinks.classList.toggle("show");
+    };
+
+    // Animación de caída de letras
+    const words = ["INNOVACIÓN", "CALIDAD", "SEGURIDAD", "MODULAR"];
+    const textElement = document.getElementById("typewriter-text");
+    let wordIndex = 0;
+
+    function animateWord() {
+      textElement.innerHTML = ""; // Limpiar el contenido antes de escribir la nueva palabra
+      const currentWord = words[wordIndex].split("");
+
+      currentWord.forEach((letter, index) => {
+        let span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${index * 0.1}s`; // Retraso para cada letra
+        textElement.appendChild(span);
+      });
+
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(animateWord, 2500); // Pausa antes de la siguiente palabra
+    }
+
+    animateWord();
+  });
 </script>

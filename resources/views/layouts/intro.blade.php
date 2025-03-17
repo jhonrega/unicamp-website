@@ -3,22 +3,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 20px 10px;
-  background-color: #f9f9f9;
+  padding: 50px 10%;
   text-align: center;
+  border-radius: 0; /* Sin bordes redondeados */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
 ">
   <h2>
-    Las mejores soluciones en contenedores
+    Innovación en Contenedores
   </h2>
 
   <p style="
-    font-family: Arial, sans-serif;
-    font-size: 18px; 
-    color: #333;
-    max-width: 900px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 18px;
+    color: #555;
+    max-width: 850px;
     line-height: 1.8;
-    margin-bottom: 20; 
+    margin-bottom: 10px;
   ">
-    Aquí encontrarás las mejores soluciones en cuanto a diseño, portabilidad, calidad y precio para la fabricación de diferentes proyectos de contenedores, como casas, modulares, baños, comedores, cocinas y más.
+    Descubre soluciones versátiles y modernas en diseño, portabilidad y eficiencia. Transforma tu espacio con contenedores adaptados a tus necesidades: casas, oficinas, baños, comedores y mucho más.
   </p>
 </section>

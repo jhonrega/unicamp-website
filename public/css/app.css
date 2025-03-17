@@ -144,85 +144,202 @@ nav ul li a:hover {
 }
 
 /* ---------------------------
-   CARRUSEL DE PROYECTOS
+   CARRUSEL DE PROYECTOS - ESTILO CORPORATIVO
 ---------------------------- */
 .project-carousel-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     width: 100%;
+    background-color: #f8f9fa;
+    padding: 40px 100px; /* Se agrega padding horizontal */
+    overflow: hidden;
+    position: relative;
 }
+
+/* ENVOLTORIO DEL CARRUSEL */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+/* CARRUSEL: Se duplica para simular un loop infinito */
+.carousel {
+    display: flex;
+    width: max-content; /* Ancho adaptable */
+}
+
+.carousel:hover {
+    animation-play-state: paused;
+}
+
 
 .project-carousel {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    padding: 20px 0;
-    max-width: 1200px;
+    max-width: 85%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
+/* Ajuste para los elementos del carrusel */
 .project-item {
-    flex: 1 1 300px; /* Tamaño flexible con mínimo de 300px */
-    max-width: 350px; /* Máximo de 350px para uniformidad */
-    display: flex;
-    align-items: stretch; /* Hace que todas las cartas tengan el mismo alto */
+    flex: 0 0 320px;
+    max-width: 320px;
     padding: 10px;
-    transition: transform 0.4s ease-in-out;
 }
 
+/* Estilos modernos para las tarjetas */
 .project-card {
-    width: 100%; 
-    max-width: 300px;
-    height: 500px; /* Ajusta la altura fija */
+    width: 100%;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.project-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.project-card .content {
-    flex-grow: 1; /* Hace que el contenido restante se distribuya equitativamente */
+/* Contenido de la tarjeta */
+.project-card .card-body {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
+}
+
+/* Título de la tarjeta */
+.project-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+/* Texto descriptivo */
+.project-card .card-text {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Estilo para el botón de cotización */
+.btn-cotizar {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-cotizar:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+    .project-carousel {
+        max-width: 100%;
+    }
+    .project-item {
+        flex: 0 0 280px;
+        max-width: 280px;
+    }
+    .project-carousel-container {
+        padding: 40px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        min-height: 360px;
+    }
+    .project-card .card-title {
+        font-size: 16px;
+    }
+    .project-card .card-text {
+        font-size: 13px;
+    }
+}
+/* Flechas minimalistas */
+.slick-prev, .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Flecha izquierda */
+.slick-prev {
+    left: -50px; /* Se ocultan por defecto */
+}
+
+/* Flecha derecha */
+.slick-next {
+    right: -50px; /* Se ocultan por defecto */
+}
+
+/* Efecto hover para mostrar las flechas */
+.project-carousel-container:hover .slick-prev {
+    left: 10px;
+}
+.project-carousel-container:hover .slick-next {
+    right: 10px;
+}
+
+/* Hover: hace más oscuro el fondo y las agranda un poco */
+.slick-prev:hover, .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
 }
 
 
-.card-products {
+card-products {
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border: none;
     padding: 20px;
     max-width: 900px; /* Ajusta el ancho */
-    margin: auto;
+    height: auto;
 }
 
-.card-products:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+.card-products img:hover {
+    filter: brightness(1);
 }
 
 .card-products img {
@@ -233,11 +350,11 @@ nav ul li a:hover {
     height: auto;
 }
 
-.card-products img:hover, .project-card img:hover {
+.card-products img:hover {
     filter: brightness(1);
 }
 
-.card-products img:hover, .project-item:hover {
+.card-products img:hover {
     transform: scale(1.02);
 }
 

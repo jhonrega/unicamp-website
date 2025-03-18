@@ -26,12 +26,12 @@
 
   <!-- Imagen de fondo con palabras -->
   @if(Request::is('/'))
-  <div class="hero-section">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <span id="typewriter-text"></span>
+    <div class="hero-section" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="overlay"></div>
+      <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+        <span id="typewriter-text"></span>
+      </div>
     </div>
-  </div>
   @endif
 </header>
 
@@ -50,7 +50,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     overflow: hidden;
 }
 

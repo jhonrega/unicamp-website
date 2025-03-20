@@ -6,8 +6,9 @@
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    line-height: 1.6;
+    
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     overflow-x: hidden; /* Bloquea cualquier desplazamiento horizontal */
 
 }
@@ -41,7 +42,7 @@ h1, h3, h4, h5, h6 {
 h2 {
     font-size: 32px;
     font-weight: 700;
-    color: #0056b3;
+    color: #1c1937;
     margin-bottom: 15px;
 }
 
@@ -81,257 +82,202 @@ nav ul li a:hover {
 }
 
 /* ---------------------------
-   SECCION DE SERVICIOS
+   SECCIÓN DE SERVICIOS - ESTILO CORPORATIVO
 ---------------------------- */
 
 .services-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 2rem;
-    gap: 1rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.services-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Alternar disposición en filas impares */
 .services-row:nth-child(even) {
     flex-direction: row-reverse;
 }
 
+/* Imagen */
 .services-img {
     flex: 1;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .services-img img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
 .services-img img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Contenido */
 .services-content {
     flex: 1;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .services-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #1c1937;
+    margin-bottom: 1rem;
 }
 
 .services-content p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
-    margin-bottom: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    .clients-container {
-        flex-direction: column;
-    }
-}
-
-/* 
-   Responsividad: En pantallas pequeñas, 
-   apila la imagen y el texto en columna 
-*/
-@media (max-width: 768px) {
+/* ---------------------------
+   RESPONSIVIDAD MEJORADA
+---------------------------- */
+@media (max-width: 1024px) {
     .services-row {
-        flex-direction: column !important;
+        flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
     }
+
+    .services-img img {
+        max-width: 90%;
+        margin-bottom: 1rem;
+    }
+    
     .services-content {
-        padding: 0.5rem;
+        padding: 1rem;
     }
 }
+
 
 /* ---------------------------
    CARRUSEL DE PROYECTOS - ESTILO CORPORATIVO
 ---------------------------- */
+
 .project-carousel-container {
     width: 100%;
-    background-color: #f8f9fa;
-    padding: 40px 100px; /* Se agrega padding horizontal */
-    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     position: relative;
+    text-align: center;
 }
-
-/* ENVOLTORIO DEL CARRUSEL */
-.carousel-wrapper {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-/* CARRUSEL: Se duplica para simular un loop infinito */
-.carousel {
-    display: flex;
-    width: max-content; /* Ancho adaptable */
-}
-
-.carousel:hover {
-    animation-play-state: paused;
-}
-
 
 .project-carousel {
     display: flex;
-    justify-content: center;
     align-items: center;
-    max-width: 85%;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 100%;
     margin: 0 auto;
-    overflow: hidden;
 }
 
-/* Ajuste para los elementos del carrusel */
+/* Tarjetas de Proyectos */
 .project-item {
-    flex: 0 0 320px;
-    max-width: 320px;
+    width: 100%;
+    max-width: 350px;
+    min-width: 300px;
     padding: 10px;
+    box-sizing: border-box;
 }
 
-/* Estilos modernos para las tarjetas */
 .project-card {
     width: 100%;
-    min-height: 350px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 16px;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e0e0e0;
-    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12);
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 🔹 Añade transición */
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenido de la tarjeta */
-.project-card .card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.project-card img {
     width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-/* Título de la tarjeta */
 .project-title {
     font-size: 18px;
-    font-weight: 600;
-    color: #007bff;
-    margin-top: 20px;
+    font-weight: 700;
+    color: #1c1937;
+    margin-top: 15px;
 }
 
-/* Texto descriptivo */
 .project-card .card-text {
-    font-size: 14px;
-    color: #555;
+    font-size: 15px;
+    color: #444;
+    margin-top: 5px;
 }
-
-/* Estilo para el botón de cotización */
-.btn-cotizar {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s ease-in-out;
-}
-
-.btn-cotizar:hover {
-    background-color: #0056b3;
-}
-
-/* Ajustes responsivos */
+/* ---------------------------
+   Responsivo
+---------------------------- */
 @media (max-width: 1024px) {
-    .project-carousel {
-        max-width: 100%;
-    }
-    .project-item {
-        flex: 0 0 280px;
-        max-width: 280px;
-    }
     .project-carousel-container {
-        padding: 40px 40px;
+        padding: 30px 15px;
+    }
+
+    .project-card {
+        min-height: 350px;
     }
 }
 
 @media (max-width: 768px) {
+    .project-carousel {
+        justify-content: center; /* Centra el carrusel */
+    }
+
+    .slick-track {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .project-item {
+        max-width: 90% !important; /* Se asegura de ocupar buen espacio */
+        display: flex;
+        justify-content: center;
+    }
+
     .project-card {
-        min-height: 360px;
+        width: 100%; /* Asegura que la tarjeta sea responsiva */
     }
-    .project-card .card-title {
-        font-size: 16px;
-    }
-    .project-card .card-text {
-        font-size: 13px;
+
+    .carousel-controls {
+        gap: 12px;
     }
 }
-/* Flechas minimalistas */
-.slick-prev, .slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    transition: background 0.3s ease, transform 0.2s ease-in-out;
-}
 
-/* Flecha izquierda */
-.slick-prev {
-    left: -50px; /* Se ocultan por defecto */
-}
-
-/* Flecha derecha */
-.slick-next {
-    right: -50px; /* Se ocultan por defecto */
-}
-
-/* Efecto hover para mostrar las flechas */
-.project-carousel-container:hover .slick-prev {
-    left: 10px;
-}
-.project-carousel-container:hover .slick-next {
-    right: 10px;
-}
-
-/* Hover: hace más oscuro el fondo y las agranda un poco */
-.slick-prev:hover, .slick-next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    transform: scale(1.1);
+.project-card:hover {
+    transform: scale(1.01) translateY(-6px) !important;
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.25); /* 🔹 Sombra más pronunciada */
 }
 
 /* ESTILOS DE LA PARTE DE CONTENEDORES */ 
@@ -398,34 +344,49 @@ card-products {
     border-radius: 8px;
 }
 
-/* ✅ BOTÓN MÁS MODERNO */
+/* ✅ BOTÓN MODERNO MEJORADO */
 .btn-custom, .btn-cotizar, .btn-dark, .boton-especificar  {
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: #fff;
     border: none;
-    padding: 12px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
+    padding: 14px 24px; /* 🔹 Más relleno */
+    font-size: 15px; /* 🔹 Fuente más legible */
+    font-weight: 700;
+    border-radius: 10px; /* 🔹 Bordes más suaves */
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
     text-decoration: none;
-    transition: background 0.3s ease-in-out, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    margin-top: 12px;
+    min-width: 160px; /* 🔹 Uniformidad en los tamaños */
 }
 
+/* 🔹 Efecto Hover */
 .btn-custom:hover, .btn-cotizar:hover, .btn-dark:hover, .boton-especificar:hover  {
     background: linear-gradient(135deg, #0056b3, #003d80);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px) scale(1.05); /* 🔹 Ligeramente más grande */
 }
 
-.btn-custom:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+/* 🔹 Efecto Click */
+.btn-custom:active, .btn-cotizar:active, .btn-dark:active, .boton-especificar:active  {
+    transform: translateY(1px) scale(1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
+
+/* 🔹 Botones en Pantallas Pequeñas */
+@media (max-width: 768px) {
+    .btn-custom, .btn-cotizar, .btn-dark, .boton-especificar {
+        padding: 12px 20px;
+        font-size: 14px;
+        min-width: 140px;
+    }
+}
+
 
 /* ICONO DEL BOTÓN */
 .btn-custom i {
@@ -466,89 +427,109 @@ card-products {
     background-color: #1c1937;
 }
 
-/* ---------------------------
-   FOOTER
----------------------------- */
 .footer {
-    width: 100%;
-    margin-top: 2rem;
+    background: #2e3c5d;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
+.footer p {
+    color: #fff;
+}
+
+/* Contenedor principal del footer */
 .footer-container {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 40px;
+    justify-content: space-evenly; /* Distribuye uniformemente */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Permite que se acomode en móviles */
     max-width: 1200px;
     margin: 0 auto;
-    gap: 30px;
+    padding: 20px;
+    gap: 30px; /* Espaciado entre secciones */
 }
 
+/* Sección del footer */
 .footer-section {
     flex: 1;
     min-width: 250px;
-    margin-bottom: 20px;
+    text-align: left;
 }
 
-.footer-section.contacto {
-    margin-right: auto;
-}
-
-.footer h6 {
-    color: #000;
+/* Títulos de las secciones */
+.footer-section h6 {
+    font-size: 18px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.footer ul {
-    padding: 0;
-    margin: 0;
-}
-
-.footer ul li {
+/* Listas dentro del footer */
+.footer-section ul {
     list-style: none;
-    margin-bottom: 5px;
+    padding: 0;
 }
 
-.footer ul li a {
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
     text-decoration: none;
-    color: #000;
+    color: white;
+    transition: color 0.3s;
 }
 
-.footer ul li a:hover {
-    text-decoration: underline;
+.footer-section ul li a:hover {
+    color: #ffffff;
 }
 
-.footer-bottom {
-    background-color: #e47d23;
-    padding: 10px 40px;
-    text-align: center;
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-section i {
+    margin-right: 8px;
     color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
 }
 
-.footer-bottom p {
-    margin: 0;
-    flex: 1;
-    text-align: center;
-}
-
+/* Estilos de las redes sociales */
 .social-icons {
     display: flex;
-    gap: 15px;
+    justify-content: center; /* Centra los iconos */
+    gap: 15px; /* Espaciado entre iconos */
 }
 
 .social-icons a {
-    color: #000;
-    font-size: 22px;
-    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    color: white;
+    transition: transform 0.3s;
 }
 
 .social-icons a:hover {
-    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Línea de Copyright */
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
 }
 
 /* ---------------------------
@@ -654,23 +635,23 @@ card-products {
 
 @media (max-width: 768px) {
 
-.menu-toggle { display: flex; }
+    .menu-toggle { display: flex; }
 
-.nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    background: white;
-    padding: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    z-index: 999;
-}
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
 
-.nav-links.show { display: flex; }
+    .nav-links.show { display: flex; }
 }
 
 .overlay {
@@ -713,28 +694,52 @@ card-products {
     animation: drop 0.5s ease-out forwards;
 }
 
+/* ---------------------------
+   IMÁGENES (MISIÓN, VISIÓN, ABOUT)
+---------------------------- */
 .mission-vision-img, .about-img {
     width: 100%;
     max-height: 400px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Efecto al pasar el cursor */
 .mission-vision-img:hover, .about-img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* ---------------------------
+   TARJETAS (MISIÓN, VISIÓN, ABOUT)
+---------------------------- */
 .mission-vision-card, .about-card {
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    border: none;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    padding: 20px;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
+/* Efecto sutil al pasar el cursor */
+.mission-vision-card:hover, .about-card:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------------------------
+   RESPONSIVIDAD MEJORADA
+---------------------------- */
 @media (max-width: 768px) {
-    .mission-vision-img {
-        max-height: 300px;
+    .mission-vision-img, .about-img {
+        max-height: 260px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .mission-vision-card, .about-card {
+        padding: 15px;
     }
 }

@@ -18,7 +18,7 @@
     <!-- Opciones de menú -->
     <div id="nav-links" class="nav-links">
       <a href="{{ url('/about') }}" class="menu-btn {{ Request::is('about') ? 'active' : '' }}">Sobre Nosotros</a>
-      <a href="{{ url('/products') }}" class="menu-btn {{ Request::is('products') ? 'active' : '' }}">Productos</a>
+      <a href="{{ url('/products') }}" class="menu-btn {{ Request::is('products') ? 'active' : '' }}">Catálogo</a>
       <a href="{{ url('/services') }}" class="menu-btn {{ Request::is('services') ? 'active' : '' }}">Servicios</a>
       <a href="{{ url('/contacto') }}" class="menu-btn {{ Request::is('contacto') ? 'active' : '' }}">Contáctanos</a>
     </div>
@@ -42,7 +42,7 @@
     margin-top: 90px;
     width: 100vw; /* Asegura que solo ocupe el ancho del viewport */
     max-width: 100%;
-    height: calc(100vw * (480 / 1280)); /* Mantiene la proporción */
+    height: calc(100vw * (380 / 1280)); /* Mantiene la proporción */
     background-image: url('{{ asset('images/fondo.webp') }}');
     background-size: cover;
     background-position: center;
@@ -52,6 +52,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    min-height: 40vh;
 }
 
 </style>

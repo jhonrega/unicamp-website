@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <!-- Imagen más pequeña -->
         <div class="col-md-3 text-center" data-aos="fade-right" data-aos-delay="200">
-            <img src="{{ asset('images/eco-friendly.webp') }}" alt="Eco Friendly" class="img-fluid" style="max-width: 80px; height: auto;">
+            <img src="{{ asset('images/eco-friendly.webp') }}" alt="Eco Friendly" class="img-fluid" style="max-width: 100px; height: auto;">
         </div>
         <!-- Texto de Medidas Eco Friendly -->
         <div class="col-md-9" data-aos="fade-left" data-aos-delay="400">
